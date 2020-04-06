@@ -110,4 +110,15 @@ class DataBase
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    function getReportIdByName(string $name){
+        $sql = '';
+        if (stristr($name, 'present')){
+           $stmt = $this->Connection->prepare('select user_id from reports where presentation = :name');
+        } else {
+            $stmt = $this->Connection->prepare('select user_id from reports where text = :name');
+        }
+        $stmt->execute([$name]);
+        return $result = $stmt->fetch(PDO::FETCH_ASSOC)["user_id"];
+       
+    }
 }

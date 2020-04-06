@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../libs/db.php';
-require '../libs/checkAccess.php';
 $DB = new DataBase();
 if (isset($_SESSION['db_error'])) {
     echo 'Ошибка подключения к БД';
@@ -13,6 +12,7 @@ if ($report == false) {
     header('Location: accessError.php');
     die();
 }
+require '../libs/checkAccess.php';
 ?>
 
 <!DOCTYPE html>
