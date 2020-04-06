@@ -5,6 +5,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/../libs/db.php';
 $db = new DataBase();
 if ($_SESSION['db_error']) {
     echo 'Ошибка доступа к БД';
+    unset($_SESSION['db_error']);
     die();
 }
 
